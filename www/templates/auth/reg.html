@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">注册</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeRegModal()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="doSignUp()" name="signUpForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">用户名</span>
+                    <input type="text" name="username" placeholder="4-20个字符" ng-model="signUpData.username" ng-minlength="4" ng-maxlength="20" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">短信验证码</span>
+                    <input type="text" name="sms_code" ng-model="signUpData.sms_code" placeholder="confirm password" required>
+                        </label>
+                <label class="item item-input">
+                    <span class="input-label">密码</span>
+                    <input type="password" name="password" ng-model="signUpData.password" placeholder="4-20个字符" ng-minlength="4" ng-maxlength="20" required>
+                </label>
+
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit" ng_disabled="!signUpForm.$valid">注册</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

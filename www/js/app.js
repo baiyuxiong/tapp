@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('track', ['ionic', 'track.controllers', 'track.services'])
+angular.module('track', ['ionic', 'track.appController', 'track.authController', 'track.appService', 'track.authService'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -28,6 +28,12 @@ angular.module('track', ['ionic', 'track.controllers', 'track.services'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+        
+    .state('app',{
+        url: '/app',
+        templateUrl: 'templates/app.html',
+        controller: 'AppCtrl'
+   })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
@@ -78,6 +84,6 @@ angular.module('track', ['ionic', 'track.controllers', 'track.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/todo');
+  $urlRouterProvider.otherwise('/app');
 
 });

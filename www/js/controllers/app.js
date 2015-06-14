@@ -1,4 +1,4 @@
-angular.module('track.controllers', [])
+angular.module('track.appController', [])
 
 .controller('TodoCtrl', function($scope,Tasks) {
     $scope.tasks = Tasks.all();

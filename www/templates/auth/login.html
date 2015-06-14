@@ -1,0 +1,31 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">登录</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLoginModal()">关闭</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doLogin()" name="loginForm">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">手机号</span>
+          <input type="text" ng-model="loginData.username" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">密码</span>
+          <input type="password" ng-model="loginData.password" required>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng_disabled="!loginForm.$valid">登录</button>
+        </label>
+      </div>
+    </form>
+
+    <div class="card" ng-show="valid_user">
+      <div class="item item-text-wrap" style="text-align: center">
+        用户名或密码错误！
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
