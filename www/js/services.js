@@ -1,10 +1,10 @@
-angular.module('starter.services', [])
+angular.module('track.services', [])
 
-.factory('Chats', function() {
+.factory('Tasks', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var tasks = [{
     id: 0,
     name: '写一篇服务器部署方案的文档',
     lastText: '[联云汽车]白玉雄在处理(90%)',
@@ -33,15 +33,15 @@ angular.module('starter.services', [])
 
   return {
     all: function() {
-      return chats;
+      return tasks;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(task) {
+      tasks.splice(tasks.indexOf(task), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(taskId) {
+      for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === parseInt(taskId)) {
+          return tasks[i];
         }
       }
       return null;
