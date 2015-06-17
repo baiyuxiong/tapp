@@ -1,0 +1,68 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">添加任务</h1>
+
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeAddTaskModal()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="doAddTask()" name="addTaskForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">名称</span>
+                    <input type="text" ng-model="task.name" required>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        着急程度
+                    </div>
+                    <select ng-model="priority" ng-options="priority.id as priority.name for priority in priorityList">
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        团队
+                    </div>
+                    <select ng-model="companyId" ng-change="companySelected()"
+                            ng-options="company.id as company.name for company in companies">
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        项目
+                    </div>
+                    <select ng-model="projectId" ng-options="project.id as project.name for project in projects">
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        指派给
+                    </div>
+                    <ion-autocomplete
+                            ng-model="model"
+                            item-value-key="view"
+                            item-view-value-key="name"
+                            item-view-value-key="id"
+                            items-method="getTestItems(query)"
+                            items-method-value-key="items"
+                            items-clicked-method="itemsClicked(callback)"
+                            select-items-label="搜索"
+                            selected-items-label="Selected:"/>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">截止日期</span>
+                    <ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
+                        <input type="text" ng-model="task.deadline" required>
+                    </ionic-datepicker>
+                </label>
+
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit" ng_disabled="!addTaskForm.$valid">
+                        登录
+                    </button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

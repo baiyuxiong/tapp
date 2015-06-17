@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('track', ['ionic', , 'track.authController','track.todoController', 'track.allController', 'track.accountController'])
+angular.module('track', ['ionic','track.authController','track.todoController', 'track.allController', 'track.accountController','comm'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -70,6 +70,7 @@ angular.module('track', ['ionic', , 'track.authController','track.todoController
 
             .state('app', {
                 url: '/app',
+                cache: false,
                 templateUrl: 'templates/app.html',
                 controller: 'AppCtrl'
             })
@@ -85,6 +86,7 @@ angular.module('track', ['ionic', , 'track.authController','track.todoController
 
             .state('tab.todo', {
                 url: '/todo',
+                cache: false,
                 views: {
                     'tab-todo': {
                         templateUrl: 'templates/tab-todo.html',

@@ -16,6 +16,16 @@
           <span class="input-label">密码</span>
           <input type="password" ng-model="loginData.password" required>
         </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            项目
+          </div>
+          <select>
+            <option>项目1</option>
+            <option selected>项目2</option>
+            <option>项目3</option>
+          </select>
+        </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit" ng_disabled="!loginForm.$valid">登录</button>
         </label>

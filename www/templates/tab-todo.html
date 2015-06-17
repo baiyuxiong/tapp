@@ -1,10 +1,23 @@
 <ion-view view-title="待处理">
+    <ion-nav-buttons side="right">
+        <button class="button icon-left ion-plus-circled" ng-click="openAddTaskModal()">
+            发起任务
+        </button>
+    </ion-nav-buttons>
     <ion-content>
-        <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="task in tasks" type="item-text-wrap" href="#/tab/tasks/{{task.id}}">
-                <img ng-src="{{task.face}}">
+        <div class="list">
+            <div class="item item-divider">
+                我在负责的
+            </div>
+            <ion-list>
+                <ion-item class="item-remove-animate item-avatar item-icon-right"
+                          ng-repeat="task in tasks.tasksInCharge"
+                          type="item-text-wrap" href="#/tab/tasks/{{task.id}}">
+                    <img src="{{task.rUser.avatar | avatar}}">
+
                     <h2><span class="ion-ios-star assertive"></span>{{task.name}}</h2>
-                    <p>{{task.lastText}}</p>
+
+                    <p>由{{task.rUser.name}}在{{task.rProject.name}}发起，我的进度为{{task.rTransfer.progress}}%</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                     <ion-option-button class="button-positive" ng-click="forward(item)">
                         转发
@@ -12,7 +25,29 @@
                     <ion-option-button class="button-assertive" ng-click="remove(chat)">
                         进度
                     </ion-option-button>
-                    </ion-item>
-        </ion-list>
+                </ion-item>
+            </ion-list>
+            <div class="item item-divider">
+                我发起的
+            </div>
+            <ion-list>
+                <ion-item class="item-remove-animate item-avatar item-icon-right"
+                          ng-repeat="task in tasks.tasksOwnedByMe"
+                          type="item-text-wrap" href="#/tab/tasks/{{task.id}}">
+                    <img src="{{task.rUser.avatar | avatar}}">
+
+                    <h2><span class="ion-ios-star assertive"></span>{{task.name}}</h2>
+
+                    <p>{{task.rUser.name}}正在负责，他的进度为{{task.rTransfer.progress}}%</p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                    <ion-option-button class="button-positive" ng-click="forward(item)">
+                        转发
+                    </ion-option-button>
+                    <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                        进度
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+        </div>
     </ion-content>
 </ion-view>

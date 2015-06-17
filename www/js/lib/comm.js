@@ -16,14 +16,28 @@ angular.module('comm', ['localstorage'])
     })())
 
     .factory('f', function (s,v) {
-        var token = s.get('token')
         return {
-            url: function (path) {
+            url: function (path,params) {
+                var token = s.get('token')
                 var u = v.base_url+path+'?client_id='+ v.client_id;
                 if(token){
                     u += '&token='+token;
                 }
+                if(params){
+                    for(k in params) {
+                        u += '&'+k+'='+params[k];
+                    }
+                }
                 return u;
             }
         };
-    });
+    })
+    .filter('avatar', function () {
+        return function (path) {
+            if (!path) {
+                return 'img/default.png'
+            }
+            return path;
+        };
+    })
+;

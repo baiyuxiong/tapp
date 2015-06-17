@@ -3,10 +3,10 @@ angular.module('track.authService', ['comm',"localstorage"])
     .factory('Auth', function (f, $http,s) {
         return {
             login: function (username, password) {
-                return $http.post(f.url('auth/login'), {username: username, password: password});
+                return $http.post(f.url('auth/login',null), {username: username, password: password});
             },
             reg: function () {
-                return $http.post(f.url('auth/reg'), {username: username, password: password,sms_code:sms_code});
+                return $http.post(f.url('auth/reg',null), {username: username, password: password,sms_code:sms_code});
             },
             changePassword: function () {
 

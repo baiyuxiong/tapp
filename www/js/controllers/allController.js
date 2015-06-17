@@ -4,8 +4,8 @@
 angular.module('track.allController', ['localstorage','track.taskService'])
 
     .controller('AllCtrl', function ($scope, Tasks) {
-        $scope.tasks = Tasks.all();
+        $scope.tasks = {};
         $scope.remove = function (task) {
-            Tasks.remove(task);
+            //Tasks.remove(task);
         }
     });

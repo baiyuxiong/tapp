@@ -1,9 +1,10 @@
 angular.module('track.authController', ['ngCordova','track.authService', 'localstorage'])
 
-    .controller('AppCtrl', function ($scope, $rootScope, $ionicModal, $state, Auth, s, $cordovaToast) {
+    .controller('AppCtrl', function ($scope, $rootScope, $ionicModal, $state, Auth, s, $cordovaToast,$location) {
 
         if (!Auth.isLoggedIn()) {
-            $state.go("app");
+            //$state.go("app");
+            $location.url("/app");
         }
         /**
          * 初始化登录弹窗
@@ -52,7 +53,7 @@ angular.module('track.authController', ['ngCordova','track.authService', 'locals
                         s.set('token', data.data.token);
                         s.set('userId', data.data.id);
                         $scope.closeLoginModal();
-                        $state.go("tab.todo");
+                        $location.url("/tab/todo");
                     }
                     else {
                         //chrome不能工作，手机上可以
