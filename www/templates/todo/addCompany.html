@@ -1,0 +1,17 @@
+<ion-view view-title="添加团队">
+    <ion-content>
+        <form ng-submit="doAddCompany()" name="addCompanyForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">名称</span>
+                    <input type="text" ng-model="task.name" required>
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit" ng_disabled="!addCompanyForm.$valid">
+                        创建
+                    </button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

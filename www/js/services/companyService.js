@@ -5,6 +5,9 @@ angular.module('track.companyService', ['comm'])
         return {
             list: function () {
                 return $http.post(f.url('company/list',null), {});
+            },
+            listMyCompanies: function () {
+                return $http.post(f.url('company/listMyCompanies',null), {});
             }
         };
     });

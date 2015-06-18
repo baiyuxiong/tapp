@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('track', ['ionic','track.authController','track.todoController', 'track.allController', 'track.accountController','comm'])
+angular.module('track', ['ionic', 'track.authController', 'track.todoController', 'track.allController', 'track.accountController',
+    'track.addTaskController', 'track.addProjectController', 'track.addCompanyController', 'comm'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -89,8 +90,38 @@ angular.module('track', ['ionic','track.authController','track.todoController', 
                 cache: false,
                 views: {
                     'tab-todo': {
-                        templateUrl: 'templates/tab-todo.html',
+                        templateUrl: 'templates/todo/tabTodo.html',
                         controller: 'TodoCtrl'
+                    }
+                }
+            })
+
+            .state('tab.todo-addTask', {
+                url: '/todo/addTask',
+                views: {
+                    'tab-todo': {
+                        templateUrl: 'templates/todo/addTask.html',
+                        controller: 'AddTaskCtrl'
+                    }
+                }
+            })
+
+            .state('tab.todo-addProject', {
+                url: '/todo/addProject',
+                views: {
+                    'tab-todo': {
+                        templateUrl: 'templates/todo/addProject.html',
+                        controller: 'AddProjectCtrl'
+                    }
+                }
+            })
+
+            .state('tab.todo-addCompany', {
+                url: '/todo/addCompany',
+                views: {
+                    'tab-todo': {
+                        templateUrl: 'templates/todo/addCompany.html',
+                        controller: 'AddCompanyCtrl'
                     }
                 }
             })
@@ -99,17 +130,8 @@ angular.module('track', ['ionic','track.authController','track.todoController', 
                 url: '/all',
                 views: {
                     'tab-all': {
-                        templateUrl: 'templates/tab-all.html',
+                        templateUrl: 'templates/all/tabAll.html',
                         controller: 'AllCtrl'
-                    }
-                }
-            })
-            .state('tab.task-detail', {
-                url: '/tasks/:taskId',
-                views: {
-                    'tab-all': {
-                        templateUrl: 'templates/task-detail.html',
-                        controller: 'TaskDetailCtrl'
                     }
                 }
             })
@@ -118,7 +140,7 @@ angular.module('track', ['ionic','track.authController','track.todoController', 
                 url: '/account',
                 views: {
                     'tab-account': {
-                        templateUrl: 'templates/tab-account.html',
+                        templateUrl: 'templates/account/tabAccount.html',
                         controller: 'AccountCtrl'
                     }
                 }

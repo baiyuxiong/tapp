@@ -1,0 +1,24 @@
+<ion-view view-title="添加任务">
+    <ion-content>
+        <form ng-submit="doAddProject()" name="addProjectForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">项目名称</span>
+                    <input type="text" ng-model="project.name" required>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        团队
+                    </div>
+                    <select ng-model="companyId" ng-options="company.id as company.name for company in companies">
+                    </select>
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit" ng_disabled="!addProjectForm.$valid">
+                        创建
+                    </button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

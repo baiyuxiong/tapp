@@ -1,9 +1,9 @@
 /**
  * Created by baiyuxiong on 15/6/15.
  */
-angular.module('track.todoController', ['localstorage', 'track.taskService', 'track.companyService', 'track.projectService', 'ionic-datepicker','ion-autocomplete'])
+angular.module('track.todoController', ['localstorage', 'track.taskService', 'track.companyService', 'track.projectService', 'ionic-datepicker', 'ion-autocomplete'])
 
-    .controller('TodoCtrl', function ($scope, Companies, Projects, Tasks, $cordovaToast, $ionicModal) {
+    .controller('TodoCtrl', function ($scope, Companies, Projects, Tasks, $cordovaToast,$ionicPopover,$location) {
         var toastShowed = false;
         Tasks.listTodo()
             .success(function (data, status, headers, config) {
@@ -46,134 +46,27 @@ angular.module('track.todoController', ['localstorage', 'track.taskService', 'tr
                 }
             });
         /**
-         * 初始化添加任务弹窗
+         * 右上角菜单
          */
+        $ionicPopover.fromTemplateUrl('templates/popover.html', {
+            scope: $scope,
+        }).then(function (popover) {
+            $scope.popover = popover;
+        });
 
-        $scope.task = {}
-
-        $ionicModal.fromTemplateUrl('templates/todo/addTask.html',
-            {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function (modal) {
-                $scope.addTaskModal = modal;
-            });
-
-        //open login
-        $scope.openAddTaskModal = function () {
-            $scope.addTaskModal.show();
-        };
-        //close login
-        $scope.closeAddTaskModal = function () {
-            $scope.addTaskModal.hide();
+        $scope.addTask = function(){
+            $scope.popover.hide();
+            $location.url("/tab/todo/addTask");
         };
 
-        /**
-         * 优先级列表
-         */
-        $scope.priorityList = [
-            {id: 3, name: '非常着急'},
-            {id: 2, name: '一般'},
-            {id: 1, name: '不着急'}
-        ];
-        $scope.priority = 2;
-
-        /**
-         * 指派用户列表
-         */
-        $scope.model = "";
-        $scope.callbackValueModel = "";
-        $scope.getTestItems = function (query) {
-            var zoekItems = [
-                {id: "1", name: "John", view: "John: "},
-                {id: "2", name: "Richard", view: "Richard: "},
-                {id: "3", name: "Steve", view: "Steve: "},
-            ];
-            var returnValue = { items: [] };
-            zoekItems.forEach(function(item){
-                console.log(item);
-                if (item.name.indexOf(query) > -1 ){
-                    returnValue.items.push(item);
-                }
-                else if (item.id.indexOf(query) > -1 ){
-                    returnValue.items.push(item);
-                }
-            });
-            return returnValue;
-        };
-        $scope.itemsClicked = function (callback) {
-            $scope.callbackValueModel = callback;
-        }
-
-        /**
-         * 日期选择
-         */
-        $scope.currentDate = new Date();
-        $scope.task.deadline = "";
-        $scope.datePickerCallback = function (val) {
-            if (typeof(val) === 'undefined') {
-                console.log('Date not selected');
-            } else {
-                var d = new Date(val);
-                $scope.task.deadline = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-                console.log('Selected date is : ', val);
-            }
+        $scope.addProject = function(){
+            $scope.popover.hide();
+            $location.url("/tab/todo/addProject");
         };
 
-        /**
-         * 团队列表
-         */
-        Companies.list()
-            .success(function (data, status, headers, config) {
-                if (data.code == 200) {
-                    $scope.companies = data.data;
-                    $scope.companyId = $scope.companies[0].id;
-                    projectList($scope.companyId)
-                }
-                else {
-                    if (!toastShowed) {
-                        $cordovaToast.showLongBottom(data.message);
-                        toastShowed = true;
-                    }
-                }
-
-            })
-            .error(function (data, status, headers, config) {
-                if (!toastShowed) {
-                    $cordovaToast.showLongBottom("异常，请检查网络或联系管理员")
-                    toastShowed = false;
-                }
-            });
-
-        /**
-         * 获取项目列表
-         */
-        var projectList = function (companyId) {
-            Projects.listByCompany(companyId)
-                .success(function (data, status, headers, config) {
-                    if (data.code == 200) {
-                        $scope.projects = data.data;
-                        $scope.projectId = $scope.projects[0].id;
-                    }
-                    else {
-                        if (!toastShowed) {
-                            $cordovaToast.showLongBottom(data.message);
-                            toastShowed = true;
-                        }
-                    }
-                })
-                .error(function (data, status, headers, config) {
-                    if (!toastShowed) {
-                        $cordovaToast.showLongBottom("异常，请检查网络或联系管理员")
-                        toastShowed = false;
-                    }
-                });
+        $scope.addCompany = function(){
+            $scope.popover.hide();
+            $location.url("/tab/todo/addCompany");
         };
-
-        /**
-         * 二级联动，根据团队获取项目列表
-         */
-        $scope.companySelected = function () {
-            projectList($scope.companyId);
-        };
-    });
+    })
+;

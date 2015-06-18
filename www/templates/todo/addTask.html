@@ -1,11 +1,4 @@
-<ion-modal-view>
-    <ion-header-bar>
-        <h1 class="title">添加任务</h1>
-
-        <div class="buttons">
-            <button class="button button-clear" ng-click="closeAddTaskModal()">关闭</button>
-        </div>
-    </ion-header-bar>
+<ion-view view-title="添加任务">
     <ion-content>
         <form ng-submit="doAddTask()" name="addTaskForm">
             <div class="list">
@@ -59,10 +52,10 @@
 
                 <label class="item">
                     <button class="button button-block button-positive" type="submit" ng_disabled="!addTaskForm.$valid">
-                        登录
+                        创建
                     </button>
                 </label>
             </div>
         </form>
     </ion-content>
-</ion-modal-view>
+</ion-view>

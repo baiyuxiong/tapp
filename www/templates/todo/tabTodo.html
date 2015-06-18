@@ -1,7 +1,7 @@
 <ion-view view-title="待处理">
     <ion-nav-buttons side="right">
-        <button class="button icon-left ion-plus-circled" ng-click="openAddTaskModal()">
-            发起任务
+        <button class="button icon-left ion-plus-circled" ng-click="popover.show($event)">
+            添加..
         </button>
     </ion-nav-buttons>
     <ion-content>
@@ -51,3 +51,22 @@
         </div>
     </ion-content>
 </ion-view>
+
+<!-- 右上角下拉菜单 -->
+<script id="templates/popover.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content>
+            <div class="list">
+                <a class="item" ng-click="addTask()">
+                    添加任务
+                </a>
+                <a class="item" ng-click="addProject()">
+                    添加项目
+                </a>
+                <a class="item" ng-click="addCompany()">
+                    添加团队
+                </a>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>
