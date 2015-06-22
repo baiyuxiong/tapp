@@ -1,23 +1,23 @@
 <ion-view view-title="待处理">
     <ion-nav-buttons side="right">
-        <button class="button icon-left ion-plus-circled" ng-click="popover.show($event)">
-            添加..
-        </button>
+        <a class="button icon-left ion-plus-circled" href="#/tab/todo/addTask">
+            添加任务
+        </a>
     </ion-nav-buttons>
     <ion-content>
         <div class="list">
             <div class="item item-divider">
-                我在负责的
+                我负责的
             </div>
             <ion-list>
                 <ion-item class="item-remove-animate item-avatar item-icon-right"
                           ng-repeat="task in tasks.tasksInCharge"
-                          type="item-text-wrap" href="#/tab/tasks/{{task.id}}">
-                    <img src="{{task.rUser.avatar | avatar}}">
+                          type="item-text-wrap" href="#/tab/todo/detail/{{task.company_id}}/{{task.id}}">
+                    <img src="{{task.rUser.avatar|avatar}}">
 
                     <h2><span class="ion-ios-star assertive"></span>{{task.name}}</h2>
 
-                    <p>由{{task.rUser.name}}在{{task.rProject.name}}发起，我的进度为{{task.rTransfer.progress}}%</p>
+                    <p>由{{task.rUser.name}}发起，我的进度为{{task.rTransfer.progress}}%</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                     <ion-option-button class="button-positive" ng-click="forward(item)">
                         转发
@@ -33,40 +33,18 @@
             <ion-list>
                 <ion-item class="item-remove-animate item-avatar item-icon-right"
                           ng-repeat="task in tasks.tasksOwnedByMe"
-                          type="item-text-wrap" href="#/tab/tasks/{{task.id}}">
-                    <img src="{{task.rUser.avatar | avatar}}">
+                          type="item-text-wrap" href="#/tab/todo/detail/{{task.company_id}}/{{task.id}}">
+                    <img src="{{task.rUser.avatar|avatar}}">
 
                     <h2><span class="ion-ios-star assertive"></span>{{task.name}}</h2>
 
                     <p>{{task.rUser.name}}正在负责，他的进度为{{task.rTransfer.progress}}%</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                     <ion-option-button class="button-positive" ng-click="forward(item)">
-                        转发
-                    </ion-option-button>
-                    <ion-option-button class="button-assertive" ng-click="remove(chat)">
-                        进度
+                        电话
                     </ion-option-button>
                 </ion-item>
             </ion-list>
         </div>
     </ion-content>
 </ion-view>
-
-<!-- 右上角下拉菜单 -->
-<script id="templates/popover.html" type="text/ng-template">
-    <ion-popover-view>
-        <ion-content>
-            <div class="list">
-                <a class="item" ng-click="addTask()">
-                    添加任务
-                </a>
-                <a class="item" ng-click="addProject()">
-                    添加项目
-                </a>
-                <a class="item" ng-click="addCompany()">
-                    添加团队
-                </a>
-            </div>
-        </ion-content>
-    </ion-popover-view>
-</script>

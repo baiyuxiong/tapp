@@ -4,11 +4,55 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{task.name}}">
-  <ion-content class="padding">
-    <img ng-src="{{task.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{task.lastText}}
-    </p>
-  </ion-content>
+<ion-view view-title="{{taskDetail.task.name}}">
+    <ion-content class="padding">
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img src="{{taskDetail.company.logo | avatar}}">
+
+                <h2>{{taskDetail.task.name}}</h2>
+
+                <p>{{taskDetail.project.name}}</p>
+
+                <p>{{taskDetail.company.name}}</p>
+            </div>
+            <div class="item item-body">
+                <p>
+                    {{taskDetail.task.info}}
+                </p>
+            </div>
+
+            <div class="item">
+                <p>
+                    指派过程
+                </p>
+                <div class="row" ng-repeat="transfer in taskDetail.taskTransfers">
+                    <div class="col text-center col-50">
+                        <div ng-if="$index == 0" class="padding-bottom">{{transfer.assignFrUserProfile.name}} <a href="tel:{{transfer.assignFrUserProfile.phone}}"><i class="icon ion-ios-telephone"></i></a></div>
+                        <div><i class="ion-arrow-down-c"></i></div>
+                        <div>{{transfer.assignToUserProfile.name}} <a href="tel:{{transfer.assignToUserProfile.phone}}"><i class="icon ion-ios-telephone"></i></a></div>
+                    </div>
+                    <div class="col col-center">{{transfer.created_at | date : 'MM-dd hh:mm'}}</div>
+                </div>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    更新进度
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    转发
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i>
+                    完成
+                </a>
+            </div>
+
+        </div>
+    </ion-content>
+
 </ion-view>

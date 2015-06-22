@@ -6,7 +6,7 @@ angular.module('comm', ['localstorage'])
     .constant('v', (function () {
         // Define your variable
 
-        var base_url = 'http://127.0.0.1:9001/';
+        var base_url = 'http://track.pub:9001/';
         var client_id = "cf23df2207d99a74";
         // Use the variable in your constants
         return {

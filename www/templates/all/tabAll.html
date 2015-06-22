@@ -1,17 +1,22 @@
 <ion-view view-title="全部">
+    <ion-nav-buttons side="right">
+        <button class="button icon-left ion-plus-circled" ng-click="popover.show($event)">
+            添加..
+        </button>
+    </ion-nav-buttons>
     <ion-content>
         <div class="list">
             <div class="item item-divider">
                 我创建的团队
             </div>
             <ion-list>
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="company in companies.companiesOwned"
+                <ion-item href="#/tab/all/company/detail/{{company.id}}" class="item-remove-animate item-avatar item-icon-right" ng-repeat="company in companies.companiesOwned"
                           type="item-text-wrap">
                     <img ng-src="{{company.logo | avatar}}">
 
                     <h2>{{company.name}}</h2>
 
-                    <p>{{company.created_at}}</p>
+                    <p>成员{{company.user_check_count}}人<span ng-if="company.user_uncheck_count > 0">,待审核<span style="color:red">{{company.user_uncheck_count}}</span>人</span></p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                     <ion-option-button class="button-positive" ng-click="forward(item)">
                         转发
@@ -31,7 +36,7 @@
 
                     <h2>{{company.name}}</h2>
 
-                    <p>{{company.created_at}}</p>
+                    <p>成员{{company.user_check_count}}人</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                     <ion-option-button class="button-positive" ng-click="forward(item)">
                         转发
@@ -50,10 +55,24 @@
                     <img ng-src="{{company.logo | avatar}}">
 
                     <h2><span class="ion-ios-star assertive"></span>{{company.name}}</h2>
-
-                    <p>{{company.created_at}}</p>
+                    <p>申请时间:{{company.created_at}}</p>
                 </ion-item>
             </ion-list>
         </div>
     </ion-content>
 </ion-view>
+<!-- 右上角下拉菜单 -->
+<script id="templates/popover.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content>
+            <div class="list">
+                <a class="item" ng-click="addCompany()">
+                    添加团队
+                </a>
+                <a class="item" ng-click="joinCompany()">
+                    加入团队
+                </a>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>

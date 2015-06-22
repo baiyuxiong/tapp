@@ -3,7 +3,7 @@
  */
 angular.module('track.allController', ['localstorage','track.companyService'])
 
-    .controller('AllCtrl', function ($scope, Companies) {
+    .controller('AllCtrl', function ($scope, Companies,$ionicPopover,$location) {
         Companies.listMyCompanies()
             .success(function (data, status, headers, config) {
                 if (data.code == 200) {
@@ -38,4 +38,22 @@ angular.module('track.allController', ['localstorage','track.companyService'])
                     toastShowed = true;
                 }
             });
+
+        /**
+         * 右上角菜单
+         */
+        $ionicPopover.fromTemplateUrl('templates/popover.html', {
+            scope: $scope,
+        }).then(function (popover) {
+            $scope.popover = popover;
+        });
+
+        $scope.addCompany = function(){
+            $scope.popover.hide();
+            $location.url("/tab/all/addCompany");
+        };
+        $scope.joinCompany = function(){
+            $scope.popover.hide();
+            $location.url("/tab/all/joinCompany");
+        };
     });

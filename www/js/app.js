@@ -6,7 +6,8 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('track', ['ionic', 'track.authController', 'track.todoController', 'track.allController', 'track.accountController',
-    'track.addTaskController', 'track.addProjectController', 'track.addCompanyController', 'comm'])
+    'track.addTaskController', 'track.addProjectController', 'track.addCompanyController','track.joinCompanyController',
+    'track.taskDetailController', 'track.companyDetailController','comm'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -106,22 +107,12 @@ angular.module('track', ['ionic', 'track.authController', 'track.todoController'
                 }
             })
 
-            .state('tab.todo-addProject', {
-                url: '/todo/addProject',
+            .state('tab.todo-detail', {
+                url: '/todo/detail/:companyId/:taskId',
                 views: {
                     'tab-todo': {
-                        templateUrl: 'templates/todo/addProject.html',
-                        controller: 'AddProjectCtrl'
-                    }
-                }
-            })
-
-            .state('tab.todo-addCompany', {
-                url: '/todo/addCompany',
-                views: {
-                    'tab-todo': {
-                        templateUrl: 'templates/todo/addCompany.html',
-                        controller: 'AddCompanyCtrl'
+                        templateUrl: 'templates/todo/taskDetail.html',
+                        controller: 'TaskDetailCtrl'
                     }
                 }
             })
@@ -132,6 +123,36 @@ angular.module('track', ['ionic', 'track.authController', 'track.todoController'
                     'tab-all': {
                         templateUrl: 'templates/all/tabAll.html',
                         controller: 'AllCtrl'
+                    }
+                }
+            })
+
+            .state('tab.all-joinCompany', {
+                url: '/all/joinCompany',
+                views: {
+                    'tab-all': {
+                        templateUrl: 'templates/all/joinCompany.html',
+                        controller: 'JoinCompanyCtrl'
+                    }
+                }
+            })
+
+            .state('tab.all-addCompany', {
+                url: '/all/addCompany',
+                views: {
+                    'tab-all': {
+                        templateUrl: 'templates/all/addCompany.html',
+                        controller: 'AddCompanyCtrl'
+                    }
+                }
+            })
+
+            .state('tab.all-company-detail', {
+                url: '/all/company/detail/:companyId',
+                views: {
+                    'tab-all': {
+                        templateUrl: 'templates/all/companyDetail.html',
+                        controller: 'CompanyDetailCtrl'
                     }
                 }
             })

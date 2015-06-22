@@ -45,28 +45,4 @@ angular.module('track.todoController', ['localstorage', 'track.taskService', 'tr
                     toastShowed = true;
                 }
             });
-        /**
-         * 右上角菜单
-         */
-        $ionicPopover.fromTemplateUrl('templates/popover.html', {
-            scope: $scope,
-        }).then(function (popover) {
-            $scope.popover = popover;
-        });
-
-        $scope.addTask = function(){
-            $scope.popover.hide();
-            $location.url("/tab/todo/addTask");
-        };
-
-        $scope.addProject = function(){
-            $scope.popover.hide();
-            $location.url("/tab/todo/addProject");
-        };
-
-        $scope.addCompany = function(){
-            $scope.popover.hide();
-            $location.url("/tab/todo/addCompany");
-        };
-    })
-;
+    });

@@ -1,0 +1,18 @@
+<ion-view view-title="加入团队">
+    <ion-content>
+        <form ng-submit="doJoinCompany()" name="joinCompanyForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">名称</span>
+                    <input type="text" ng-model="companyName" required placeholder="输入完整的团队名称搜索">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit"
+                            ng_disabled="!joinCompanyForm.$valid">
+                        申请加入
+                    </button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

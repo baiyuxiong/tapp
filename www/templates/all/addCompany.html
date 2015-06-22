@@ -1,0 +1,37 @@
+<ion-view view-title="添加团队">
+    <ion-content>
+        <form ng-submit="doAddCompany()" name="addCompanyForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">名称</span>
+                    <input type="text" ng-model="company.name" required placeholder="团队名称，必填">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">电话</span>
+                    <input type="tel" ng-model="company.phone">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">地址</span>
+                    <input type="text" ng-model="company.address">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">介绍</span>
+                    <input type="text" ng-model="company.info">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Logo</span>
+                    <input type="hidden" ng-model="company.logo">
+                    <button class="button button-block button-positive" ng-click="addLogo()">
+                        选择图片
+                    </button>
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit"
+                            ng_disabled="!addCompanyForm.$valid">
+                        创建
+                    </button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

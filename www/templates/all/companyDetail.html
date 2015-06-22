@@ -1,0 +1,57 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (tabController.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{companyDetail.company.name}}">
+    <ion-content class="padding">
+        <div class="list">
+            <div class="item item-avatar">
+                <img src="{{companyDetail.company.logo | avatar}}">
+
+                <h2>{{companyDetail.company.name}}</h2>
+            </div>
+        </div>
+        <div class="list">
+            <div class="item item-divider">
+                共{{companyDetail.company.project_count}}个项目
+            </div>
+            <a class="item" ng-href="#tab/all/company/project/{{project.company_id}}/{{project.id}}" ng-repeat="project in companyDetail.projects">
+                {{project.name}}
+            </a>
+            <a class="item" ng-href="#tab/all/company/projects" ng-if="companyDetail.company.project_count > 3">
+                查看更多
+            </a>
+        </div>
+        <div class="list">
+            <div class="item item-divider row">
+                <div class="col">
+                    成员{{companyDetail.company.user_check_count}}人
+                    <span ng-if="companyDetail.company.user_uncheck_count > 0">,待审核<span style="color:red">{{companyDetail.company.user_uncheck_count}}</span>人</span>
+                </div>
+            </div>
+            <a class="item item-button-right" href="#" ng-repeat="userProfile in companyDetail.userProfiles">
+                {{userProfile.name}}({{userProfile.phone}})
+                    <button class="button button-positive">
+                        <i class="icon ion-ios-telephone"></i>
+                    </button>
+            </a>
+            <a class="item" href="#" ng-if="(companyDetail.company.user_check_count+companyDetail.company.user_uncheck_count) > 3">
+                查看更多
+            </a>
+        </div>
+        <div class="list card">
+            <div class="item item-body">
+                <p>
+                    介绍：{{companyDetail.company.info}}
+                </p>
+
+                <p>
+                    地址：{{companyDetail.company.address}}
+                </p>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>

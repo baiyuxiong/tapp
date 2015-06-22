@@ -64,8 +64,11 @@ angular.module('track.addTaskController', ['localstorage', 'track.userService', 
             .success(function (data, status, headers, config) {
                 if (data.code == 200) {
                     $scope.companies = data.data;
-                    $scope.companyId = $scope.companies[0].id;
-                    projectList($scope.companyId)
+                    if($scope.companies[0])
+                    {
+                        $scope.companyId = $scope.companies[0].id;
+                        projectList($scope.companyId)
+                    }
                 }
                 else {
                     if (!toastShowed) {
@@ -90,7 +93,10 @@ angular.module('track.addTaskController', ['localstorage', 'track.userService', 
                 .success(function (data, status, headers, config) {
                     if (data.code == 200) {
                         $scope.projects = data.data;
-                        $scope.projectId = $scope.projects[0].id;
+                        if($scope.projects[0])
+                        {
+                            $scope.projectId = $scope.projects[0].id;
+                        }
                     }
                     else {
                         if (!toastShowed) {

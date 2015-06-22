@@ -5,6 +5,9 @@ angular.module('track.taskService', ['comm'])
         return {
             listTodo: function () {
                 return $http.post(f.url('task/listTodo',null), {});
+            },
+            detail:function(companyId, taskId){
+                return $http.post(f.url('task/detail',{companyId:companyId, taskId:taskId }), {});
             }
         };
     });
