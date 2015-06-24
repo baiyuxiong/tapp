@@ -8,6 +8,9 @@ angular.module('track.projectService', ['comm'])
             },
             listCompanyAndProject: function (companyId) {
                 return $http.post(f.url('project/listCompanyAndProject'),null);
+            },
+            detail:function(companyId,projectId){
+                return $http.post(f.url('project/detail'),{companyId:companyId,id:projectId},null);
             }
         };
     });

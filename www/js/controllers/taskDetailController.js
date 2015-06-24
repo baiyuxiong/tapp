@@ -9,11 +9,25 @@ angular.module('track.taskDetailController', ['localstorage', 'track.taskService
         Tasks.detail($scope.companyId,$scope.taskId)
             .success(function (data, status, headers, config) {
                 if (data.code == 200) {
+
+                    myUserId = s.get('userId');
                     $scope.taskDetail = data.data;
                     for( key in $scope.taskDetail.taskTransfers)
                     {
-                        $scope.taskDetail.taskTransfers[key].assignFrUserProfile = $scope.taskDetail.taskTransferUsers[$scope.taskDetail.taskTransfers[key].assign_fr];
-                        $scope.taskDetail.taskTransfers[key].assignToUserProfile = $scope.taskDetail.taskTransferUsers[$scope.taskDetail.taskTransfers[key].assign_to];
+                        assignFrUserProfile = $scope.taskDetail.taskTransferUsers[$scope.taskDetail.taskTransfers[key].assign_fr];
+                        assignToUserProfile = $scope.taskDetail.taskTransferUsers[$scope.taskDetail.taskTransfers[key].assign_to];
+
+                        if(assignFrUserProfile.user_id == myUserId)
+                        {
+                            assignFrUserProfile.name="我";
+                        }
+                        if(assignToUserProfile.user_id == myUserId)
+                        {
+                            assignToUserProfile.name="我";
+                        }
+
+                        $scope.taskDetail.taskTransfers[key].assignFrUserProfile = assignFrUserProfile;
+                        $scope.taskDetail.taskTransfers[key].assignToUserProfile = assignToUserProfile;
                     }
                 }
                 else {

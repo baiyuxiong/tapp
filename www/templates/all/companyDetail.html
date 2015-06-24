@@ -17,10 +17,10 @@
             <div class="item item-divider">
                 共{{companyDetail.company.project_count}}个项目
             </div>
-            <a class="item" ng-href="#tab/all/company/project/{{project.company_id}}/{{project.id}}" ng-repeat="project in companyDetail.projects">
+            <a class="item" ng-href="#/tab/all/company/project/detail/{{project.company_id}}/{{project.id}}" ng-repeat="project in companyDetail.projects">
                 {{project.name}}
             </a>
-            <a class="item" ng-href="#tab/all/company/projects" ng-if="companyDetail.company.project_count > 3">
+            <a class="item" ng-href="#tab/all/company/projects/{{project.company_id}}" ng-if="companyDetail.company.project_count > 3">
                 查看更多
             </a>
         </div>

@@ -7,7 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('track', ['ionic', 'track.authController', 'track.todoController', 'track.allController', 'track.accountController',
     'track.addTaskController', 'track.addProjectController', 'track.addCompanyController','track.joinCompanyController',
-    'track.taskDetailController', 'track.companyDetailController','comm'])
+    'track.taskDetailController', 'track.companyDetailController','track.projectDetailController','track.companyProjectsController',
+    'track.projectDetailController','comm'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -153,6 +154,36 @@ angular.module('track', ['ionic', 'track.authController', 'track.todoController'
                     'tab-all': {
                         templateUrl: 'templates/all/companyDetail.html',
                         controller: 'CompanyDetailCtrl'
+                    }
+                }
+            })
+
+            .state('tab.all-company-projects', {
+                url: '/all/company/projects/:companyId',
+                views: {
+                    'tab-all': {
+                        templateUrl: 'templates/all/companyProjects.html',
+                        controller: 'CompanyProjectsCtrl'
+                    }
+                }
+            })
+
+            .state('tab.all-company-project-detail', {
+                url: '/all/company/project/detail/:companyId/:projectId',
+                views: {
+                    'tab-all': {
+                        templateUrl: 'templates/all/projectDetail.html',
+                        controller: 'ProjectDetailCtrl'
+                    }
+                }
+            })
+
+            .state('tab.all-company-project-task-detail', {
+                url: '/all/company/project/task/detail/:companyId/:taskId',
+                views: {
+                    'tab-all': {
+                        templateUrl: 'templates/todo/taskDetail.html',
+                        controller: 'TaskDetailCtrl'
                     }
                 }
             })

@@ -1,4 +1,4 @@
-angular.module('track.companyService', ['comm'])
+angular.module('track.companyUserService', ['comm'])
 
     .factory('CompanyUsers', function ($http, f, v, s) {
 

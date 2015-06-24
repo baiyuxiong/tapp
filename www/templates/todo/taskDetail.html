@@ -27,13 +27,30 @@
                 <p>
                     指派过程
                 </p>
-                <div class="row" ng-repeat="transfer in taskDetail.taskTransfers">
-                    <div class="col text-center col-50">
-                        <div ng-if="$index == 0" class="padding-bottom">{{transfer.assignFrUserProfile.name}} <a href="tel:{{transfer.assignFrUserProfile.phone}}"><i class="icon ion-ios-telephone"></i></a></div>
-                        <div><i class="ion-arrow-down-c"></i></div>
-                        <div>{{transfer.assignToUserProfile.name}} <a href="tel:{{transfer.assignToUserProfile.phone}}"><i class="icon ion-ios-telephone"></i></a></div>
+                <div ng-repeat="transfer in taskDetail.taskTransfers">
+                    <div ng-if="$index == 0" class="row">
+                        <div class="col text-center col-50" ng-if="$index == 0">
+                            <div>{{transfer.assignFrUserProfile.name}} <a href="tel:{{transfer.assignFrUserProfile.phone}}"><i class="icon ion-ios-telephone"></i></a></div>
+                            <div class="padding-bottom padding-top"><i class="ion-arrow-down-c"></i></div>
+                            <div>{{transfer.assignToUserProfile.name}} <a href="tel:{{transfer.assignToUserProfile.phone}}"><i class="icon ion-ios-telephone"></i></a></div>
+                        </div>
+                        <div class="col col-center col-50">{{transfer.created_at | date : 'MM-dd hh:mm'}}</div>
                     </div>
-                    <div class="col col-center">{{transfer.created_at | date : 'MM-dd hh:mm'}}</div>
+                    <div ng-if="$index != 0">
+                        <div class="row">
+                            <div class="col text-center col-50">
+                                <div><i class="ion-arrow-down-c"></i></div>
+                            </div>
+                            <div class="col col-center col-50">{{transfer.created_at | date : 'MM-dd hh:mm'}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-center col-50">
+                                <div>{{transfer.assignToUserProfile.name}} <a href="tel:{{transfer.assignToUserProfile.phone}}"><i class="icon ion-ios-telephone"></i></a></div>
+                            </div>
+                            <div class="col col-center col-50"></div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

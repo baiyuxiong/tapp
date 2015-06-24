@@ -5,7 +5,7 @@ angular.module('track.companyDetailController', ['localstorage', 'track.companyS
 
     .controller('CompanyDetailCtrl', function ($scope, $state, s, User, $cordovaToast, f, Companies,$stateParams,$cordovaToast) {
         $scope.companyId = $stateParams.companyId;
-        Companies.detail($scope.companyId)
+        Companies.detail($stateParams.companyId)
             .success(function (data, status, headers, config) {
                 if (data.code == 200) {
                     $scope.companyDetail = data.data;
