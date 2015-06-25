@@ -6,9 +6,9 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('track', ['ionic', 'track.authController', 'track.todoController', 'track.allController', 'track.accountController',
-    'track.addTaskController', 'track.addProjectController', 'track.addCompanyController','track.joinCompanyController',
-    'track.taskDetailController', 'track.companyDetailController','track.projectDetailController','track.companyProjectsController',
-    'track.projectDetailController','comm'])
+    'track.addTaskController', 'track.addProjectController', 'track.addCompanyController', 'track.joinCompanyController',
+    'track.taskDetailController', 'track.companyDetailController', 'track.projectDetailController', 'track.companyProjectsController',
+    'track.projectDetailController', 'comm'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -194,6 +194,34 @@ angular.module('track', ['ionic', 'track.authController', 'track.todoController'
                     'tab-account': {
                         templateUrl: 'templates/account/tabAccount.html',
                         controller: 'AccountCtrl'
+                    }
+                }
+            })
+
+            .state('tab.account-editProfile', {
+                url: '/account/editProfile',
+                views: {
+                    'tab-account': {
+                        templateUrl: 'templates/account/editProfile.html',
+                        controller: 'EditProfileCtrl'
+                    }
+                }
+            })
+            .state('tab.account-editPassword', {
+                url: '/account/editPassword',
+                views: {
+                    'tab-account': {
+                        templateUrl: 'templates/account/editPassword.html',
+                        controller: 'EditPasswordCtrl'
+                    }
+                }
+            })
+            .state('tab.account-help', {
+                url: '/account/help',
+                views: {
+                    'tab-account': {
+                        templateUrl: 'templates/account/help.html',
+                        controller: 'HelpCtrl'
                     }
                 }
             });

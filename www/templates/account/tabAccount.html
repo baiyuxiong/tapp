@@ -6,22 +6,24 @@
 
                 <h2>{{user.userProfile.name}}</h2>
 
-                <p>November 05, 1955</p>
+                <p>{{user.userProfile.phone}}</p>
             </div>
-            <div class="item">
-                <button class="button button-block button-positive icon-left ion-image" ng-click="changePassword()">
-                    修改信息
-                </button>
-                <button class="button button-block button-positive icon-left ion-edit" ng-click="changePassword()">
-                    修改密码
-                </button>
-                <button class="button button-block button-positive icon-left ion-image" ng-click="changePassword()">
-                    使用说明
-                </button>
-                <button class="button button-block button-positive icon-left ion-log-out" ng-click="doLogout()">
-                    退出账号
-                </button>
-            </div>
+            <a class="item item-icon-left" href="#tab/account/editProfile">
+                <i class="icon ion-edit"></i>
+                修改信息
+            </a>
+            <a class="item item-icon-left" href="#tab/account/editPassword">
+                <i class="icon ion-locked"></i>
+                修改密码
+            </a>
+            <a class="item item-icon-left" href="#tab/account/help">
+                <i class="icon ion-help"></i>
+                使用帮助
+            </a>
+            <a class="item item-icon-left" href="javascript:void(0)" ng-click="doLogout()">
+                <i class="icon ion-log-out"></i>
+                退出账号
+            </a>
         </div>
     </ion-content>
 </ion-view>

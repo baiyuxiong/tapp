@@ -18,11 +18,8 @@
 
                     <p>成员{{company.user_check_count}}人<span ng-if="company.user_uncheck_count > 0">,待审核<span style="color:red">{{company.user_uncheck_count}}</span>人</span></p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
-                    <ion-option-button class="button-positive" ng-click="forward(item)">
-                        转发
-                    </ion-option-button>
-                    <ion-option-button class="button-assertive" ng-click="remove(chat)">
-                        进度
+                    <ion-option-button class="button-assertive" ng-click="">
+                        编辑
                     </ion-option-button>
                 </ion-item>
             </ion-list>
@@ -39,10 +36,7 @@
                     <p>成员{{company.user_check_count}}人</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                     <ion-option-button class="button-positive" ng-click="forward(item)">
-                        转发
-                    </ion-option-button>
-                    <ion-option-button class="button-assertive" ng-click="remove(chat)">
-                        进度
+                        退出
                     </ion-option-button>
                 </ion-item>
             </ion-list>
