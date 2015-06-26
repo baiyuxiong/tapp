@@ -1,5 +1,21 @@
 <ion-view view-title="修改信息">
     <ion-content>
-        修改信息
+        <form ng-submit="doEditProfile()" name="editProfileForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">姓名</span>
+                    <input type="text" ng-model="profile.name" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">电话</span>
+                    <input type="tel" ng-model="profile.phone" required>
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit" ng_disabled="!editProfileForm.$valid">
+                        提交
+                    </button>
+                </label>
+            </div>
+        </form>
     </ion-content>
 </ion-view>

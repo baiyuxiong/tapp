@@ -24,6 +24,13 @@ angular.module('track', ['ionic', 'track.authController', 'track.todoController'
         });
     })
 
+    .config(function($ionicConfigProvider){
+        $ionicConfigProvider.platform.android.tabs.position("bottom");
+        $ionicConfigProvider.platform.android.navBar.alignTitle("center");
+        $ionicConfigProvider.tabs.style("standard");
+
+    })
+
     //http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/
     .config(function ($httpProvider) {
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';

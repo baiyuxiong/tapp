@@ -79,8 +79,10 @@ angular.module('track.addCompanyController', ["ngCordova", 'localstorage', 'trac
                 saveToPhotoAlbum: false
             };
 
-            $cordovaCamera.getPicture(options).then(function (imageData) {
-                $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            $cordovaCamera.getPicture(options).then(function (imageURI) {
+                //$scope.imgURI = "data:image/jpeg;base64," + imageData;
+                var image = document.getElementById('myImage');
+                image.src = imageURI;
             }, function (err) {
                 // An error occured. Show a message to the user
             });
