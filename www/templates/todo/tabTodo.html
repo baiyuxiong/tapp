@@ -19,10 +19,10 @@
 
                     <p>由{{task.rUser.name}}发起，我的进度为{{task.rTransfer.progress}}%</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
-                    <ion-option-button class="button-positive" ng-click="forward(item)">
+                    <ion-option-button class="button-positive" ng-click="openTaskTransferModal()">
                         转发
                     </ion-option-button>
-                    <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    <ion-option-button class="button-assertive" ng-click="openTaskProgress()">
                         进度
                     </ion-option-button>
                 </ion-item>
@@ -40,7 +40,7 @@
 
                     <p>{{task.rUser.name}}正在负责，他的进度为{{task.rTransfer.progress}}%</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
-                    <ion-option-button class="button-positive" ng-click="forward(item)">
+                    <ion-option-button class="button-positive" ng-click="CallTel({{task.rUser.phone}})">
                         电话
                     </ion-option-button>
                 </ion-item>

@@ -3,7 +3,58 @@
  */
 angular.module('track.todoController', ['localstorage', 'track.taskService', 'track.companyService', 'track.projectService', 'ionic-datepicker', 'ion-autocomplete'])
 
-    .controller('TodoCtrl', function ($scope, Companies, Projects, Tasks, $cordovaToast,$ionicPopover,$location) {
+    .controller('TodoCtrl', function ($scope, Companies, Projects, Tasks, $cordovaToast,$ionicPopover,$location,$ionicModal,$ionicActionSheet) {
+
+        //初始化转发弹窗
+        $ionicModal.fromTemplateUrl('templates/todo/taskTransfer.html',
+            {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function (modal) {
+                $scope.taskTransferModal = modal;
+            });
+
+        //open login
+        $scope.openTaskTransferModal = function () {
+            $scope.taskTransferModal.show();
+        };
+        //close login
+        $scope.closeTaskTransferModal = function () {
+            $scope.taskTransferModal.hide();
+        };
+
+        $scope.openTaskProgress = function () {
+            $ionicActionSheet.show({
+                buttons: [
+                    {text: '10%'},
+                    {text: '20%'},
+                    {text: '30%'},
+                    {text: '50%'},
+                    {text: '60%'},
+                    {text: '80%'},
+                    {text: '90%'},
+                    {text: '100%'},
+                ],
+                cancelText: '关闭',
+                cancel: function () {
+                    return true;
+                },
+                buttonClicked: function (index,btn) {
+                    $scope.doTaskTransfer(btn.text)
+                    return true;
+                }
+            });
+        };
+
+
+        $scope.doTaskTransfer = function($progress){
+
+        };
+
+        //打电话
+        $scope.CallTel = function(tel) {
+            window.location.href = 'tel:'+ tel;
+        }
         var toastShowed = false;
         Tasks.listTodo()
             .success(function (data, status, headers, config) {

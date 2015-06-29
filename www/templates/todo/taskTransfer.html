@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">指派</h1>
+
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeTaskTransferModal()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="doTaskTransfer()" name="taskTransferForm">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">指派给</span>
+                    <input type="text" ng-model="loginData.username" required>
+                </label>
+                <div class="item item-divider">
+                    从最近联系人中点选
+                </div>
+                <div class="item item-text-wrap">
+                    小王 小李 小张
+                </div>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit" ng_disabled="!loginForm.$valid">
+                        指派
+                    </button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>
